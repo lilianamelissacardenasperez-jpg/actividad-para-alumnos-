@@ -3,26 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aprendiendo los Números</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Actividad de Números</title>
+    <style>
+        /* DISEÑO (CSS) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e0f7fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: #00796b;
+            text-shadow: 1px 1px 2px white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .contenedor {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .boton-num {
+            width: 80px;
+            height: 80px;
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 5px #999;
+        }
+        .boton-num:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px #666;
+        }
+        /* Colores divertidos */
+        .n1 { background-color: #f44336; } .n2 { background-color: #e91e63; }
+        .n3 { background-color: #9c27b0; } .n4 { background-color: #673ab7; }
+        .n5 { background-color: #3f51b5; } .n6 { background-color: #2196f3; }
+        .n7 { background-color: #00bcd4; } .n8 { background-color: #4caf50; }
+        .n9 { background-color: #ffeb3b; color: #333; } .n10 { background-color: #ff9800; }
+
+        @media (max-width: 500px) {
+            .contenedor { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
 </head>
 <body>
 
-    <h1>¡Haz clic en un número!</h1>
-    
-    <div class="contenedor-numeros">
-        <button class="boton-numero" onclick="decirNumero(1)">1</button>
-        <button class="boton-numero" onclick="decirNumero(2)">2</button>
-        <button class="boton-numero" onclick="decirNumero(3)">3</button>
-        <button class="boton-numero" onclick="decirNumero(4)">4</button>
-        <button class="boton-numero" onclick="decirNumero(5)">5</button>
-        <button class="boton-numero" onclick="decirNumero(6)">6</button>
-        <button class="boton-numero" onclick="decirNumero(7)">7</button>
-        <button class="boton-numero" onclick="decirNumero(8)">8</button>
-        <button class="boton-numero" onclick="decirNumero(9)">9</button>
-        <button class="boton-numero" onclick="decirNumero(10)">10</button>
+    <h1>¡Cuenta los números!</h1>
+
+    <div class="contenedor">
+        <button class="boton-num n1" onclick="hablar(1)">1</button>
+        <button class="boton-num n2" onclick="hablar(2)">2</button>
+        <button class="boton-num n3" onclick="hablar(3)">3</button>
+        <button class="boton-num n4" onclick="hablar(4)">4</button>
+        <button class="boton-num n5" onclick="hablar(5)">5</button>
+        <button class="boton-num n6" onclick="hablar(6)">6</button>
+        <button class="boton-num n7" onclick="hablar(7)">7</button>
+        <button class="boton-num n8" onclick="hablar(8)">8</button>
+        <button class="boton-num n9" onclick="hablar(9)">9</button>
+        <button class="boton-num n10" onclick="hablar(10)">10</button>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        /* SONIDO (JavaScript) */
+        function hablar(texto) {
+            // Cancelar cualquier sonido previo para que no se amontonen
+            window.speechSynthesis.cancel();
+            
+            const mensaje = new SpeechSynthesisUtterance(texto);
+            mensaje.lang = 'es-MX'; // Español de México
+            mensaje.rate = 0.9;    // Un poquito más lento para que se entienda bien
+            mensaje.pitch = 1.3;   // Tono amigable
+            
+            window.speechSynthesis.speak(mensaje);
+        }
+    </script>
 </body>
 </html>
