@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figuras geométricas</title>
+
+<style>
+body{
+font-family:Arial;
+text-align:center;
+background:#f5f5f5;
+}
+
+h1{
+color:#ff6600;
+}
+
+.figura{
+font-size:40px;
+padding:20px;
+margin:15px;
+border-radius:20px;
+border:none;
+}
+
+.correcto{
+background:#4CAF50;
+color:white;
+}
+
+.incorrecto{
+background:#2196F3;
+color:white;
+}
+
+#mensaje{
+font-size:28px;
+margin-top:20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>¿Dónde está el CÍRCULO?</h1>
+
+<button class="figura correcto" onclick="bien()">⚪</button>
+<button class="figura incorrecto" onclick="mal()">🔺</button>
+<button class="figura incorrecto" onclick="mal()">🟩</button>
+
+<div id="mensaje"></div>
+
+<script>
+function bien(){
+document.getElementById("mensaje").innerHTML="¡Muy bien!";
+}
+
+function mal(){
+document.getElementById("mensaje").innerHTML="Intenta otra vez";
+}
+</script>
+
+</body>
+</html>
